@@ -1,5 +1,12 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { Product } from '../types';
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  type ReactNode,
+} from "react";
+
+import type { Product } from "../types";
 
 interface Config {
   name: string;
@@ -34,23 +41,41 @@ interface AppData {
   error: string | null;
 }
 
-const ConfigContext = createContext<AppData>({ config: null, products: [], loading: true, error: null });
+const ConfigContext = createContext<AppData>({
+  config: null,
+  products: [],
+  loading: true,
+  error: null,
+});
 
 export function AppProvider({ children }: { children: ReactNode }) {
-  const [data, setData] = useState<AppData>({ config: null, products: [], loading: true, error: null });
+  const [data, setData] = useState<AppData>({
+    config: null,
+    products: [],
+    loading: true,
+    error: null,
+  });
 
   useEffect(() => {
     Promise.all([
-      fetch('/api/config').then(r => r.ok ? r.json() : Promise.reject('Failed to fetch config')),
-      fetch('/api/products').then(r => r.ok ? r.json() : Promise.reject('Failed to fetch products'))
-    ]).then(([config, products]) => {
-      setData({ config, products, loading: false, error: null });
-    }).catch(err => {
-      setData(prev => ({ ...prev, loading: false, error: err.toString() }));
-    });
+      fetch("/api/config").then((r) =>
+        r.ok ? r.json() : Promise.reject("Failed to fetch config"),
+      ),
+      fetch("/api/products").then((r) =>
+        r.ok ? r.json() : Promise.reject("Failed to fetch products"),
+      ),
+    ])
+      .then(([config, products]) => {
+        setData({ config, products, loading: false, error: null });
+      })
+      .catch((err) => {
+        setData((prev) => ({ ...prev, loading: false, error: err.toString() }));
+      });
   }, []);
 
-  return <ConfigContext.Provider value={data}>{children}</ConfigContext.Provider>;
+  return (
+    <ConfigContext.Provider value={data}>{children}</ConfigContext.Provider>
+  );
 }
 
 export const useAppConfig = () => useContext(ConfigContext);
