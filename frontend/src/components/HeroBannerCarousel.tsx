@@ -132,11 +132,13 @@ export default function HeroBannerCarousel() {
       onTouchEnd={handleTouchEnd}
     >
       {/* Frame Container */}
-      <div className="relative overflow-hidden rounded-2xl shadow-xl border border-gray-200/80 bg-gray-900 aspect-[16/9] sm:aspect-[2/1] md:aspect-[21/9] md:h-[400px] lg:h-[440px] w-full">
-        {/* Sliding Track: moves horizontally from right to left as currentIndex increases */}
+      <div className="relative overflow-hidden rounded-2xl shadow-xl border border-gray-200/80 bg-black aspect-[8/3] w-full">
+        {/* Sliding Track */}
         <div
           className="flex w-full h-full transition-transform duration-700 ease-out"
-          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          style={{
+            transform: `translateX(-${currentIndex * 100}%)`,
+          }}
         >
           {banners.map((banner, idx) => (
             <div
@@ -146,22 +148,24 @@ export default function HeroBannerCarousel() {
               <img
                 src={banner.image}
                 alt={banner.alt}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain object-center"
                 loading={idx === 0 ? 'eager' : 'lazy'}
               />
 
-              {/* Dark Gradient Overlay for text readability */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-5 sm:p-8 md:p-10 text-white">
+              {/* Dark Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-3 sm:p-8 md:p-10 text-white">
                 {banner.tag && (
-                  <span className="inline-block self-start text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-blue-600/95 text-white backdrop-blur-md px-2.5 py-1 rounded-md mb-2 shadow-sm">
+                  <span className="inline-block self-start text-[8px] sm:text-xs font-bold uppercase tracking-wider bg-blue-600/95 text-white px-2.5 py-1 rounded-md mb-1 sm:mb-2 shadow-sm">
                     {banner.tag}
                   </span>
                 )}
-                <h3 className="text-lg sm:text-2xl md:text-3xl font-extrabold text-white leading-tight drop-shadow-md">
+
+                <h3 className="text-sm sm:text-2xl md:text-3xl font-extrabold text-white leading-tight drop-shadow-md">
                   {banner.title}
                 </h3>
+
                 {banner.subtitle && (
-                  <p className="text-xs sm:text-sm md:text-base text-gray-200 mt-1 sm:mt-1.5 line-clamp-2 drop-shadow max-w-2xl">
+                  <p className="hidden sm:block text-sm md:text-base text-gray-200 mt-1.5 line-clamp-2 drop-shadow max-w-2xl">
                     {banner.subtitle}
                   </p>
                 )}
@@ -211,6 +215,6 @@ export default function HeroBannerCarousel() {
           ))}
         </div>
       </div>
-    </div>
+    </div >
   );
 }
