@@ -4,9 +4,9 @@ import {
   useState,
   useEffect,
   type ReactNode,
-} from "react";
+} from 'react';
 
-import type { Product } from "../types";
+import type { Product } from '../types';
 
 interface Config {
   name: string;
