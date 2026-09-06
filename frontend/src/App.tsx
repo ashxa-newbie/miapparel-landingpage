@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Header from './components/Header';
 import BannerSection from './components/BannerSection';
+import BusinessHours from './components/BusinessHours';
 import ProductCatalog from './components/ProductCatalog';
 import LocationSection from './components/LocationSection';
 import CompanyIntro from './components/CompanyIntro';
@@ -44,8 +45,15 @@ function MainApp() {
           <BannerSection />
         </FadeInSection>
 
+        {/* Jam buka toko */}
+        <FadeInSection>
+          <BusinessHours />
+        </FadeInSection>
+
+
         {/* 2. Katalog Produk */}
         <FadeInSection>
+
           <ProductCatalog onSelectProduct={setSelectedProduct} />
         </FadeInSection>
 

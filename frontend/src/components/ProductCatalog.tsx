@@ -86,7 +86,7 @@ export default function ProductCatalog({
   return (
     <section
       id="katalog"
-      className="py-16 md:py-24 bg-white border-b border-gray-100"
+      className="pt-5 pb-16 md:pt-7 md:pb-24 bg-white border-b border-gray-100"
     >
       <div className="max-w-7xl mx-auto px-4">
         {/* Header Katalog dan Fitur Pencarian */}
