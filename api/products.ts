@@ -1,9 +1,9 @@
 import type { Request, Response } from 'express';
-import { products } from '../backend/data';
+import { products } from '../backend/data.js';
 
 export default function handler(
     _request: Request,
     response: Response
 ) {
-    return response.status(200).json(products);
+    response.status(200).json(products);
 }

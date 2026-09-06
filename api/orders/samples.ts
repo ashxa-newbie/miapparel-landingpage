@@ -1,5 +1,5 @@
 import type { Request, Response } from 'express';
-import { orders } from '../../backend/data';
+import { orders } from '../../backend/data.js';
 
 export default function handler(
     _request: Request,
