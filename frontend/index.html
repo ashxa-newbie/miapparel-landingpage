@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <script>
+      (function() {
+        var originalFetch = window.fetch;
+        Object.defineProperty(window, 'fetch', {
+          configurable: true,
+          enumerable: true,
+          get: function() {
+            return originalFetch;
+          },
+          set: function(newFetch) {
+            Object.defineProperty(window, 'fetch', {
+              value: newFetch,
+              configurable: true,
+              enumerable: true,
+              writable: true
+            });
+          }
+        });
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MI Apparel - Jasa Sublim Jersey & Konveksi</title>
+    <meta name="description" content="Pusat informasi usaha, katalog produk, dan pemesanan MI Apparel." />
+    <meta property="og:title" content="MI Apparel - Jasa Sublim Jersey & Konveksi" />
+    <meta property="og:description" content="Pusat informasi usaha, katalog produk, dan pemesanan MI Apparel." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
