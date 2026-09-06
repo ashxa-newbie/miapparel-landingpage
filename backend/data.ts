@@ -1,4 +1,4 @@
-import { Product, OrderTracking } from './types';
+import type { Product, OrderTracking } from './types';
 
 export const siteConfig = {
   name: "MI Apparel",
